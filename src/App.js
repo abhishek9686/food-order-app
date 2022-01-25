@@ -1,10 +1,11 @@
-import "./App.css";
-import Header from "./components/Layout/Header";
-import React, { useState } from "react";
-import Meals from "./components/Meals/Meals";
-import Cart from "./components/Cart/Cart";
-import CardProvider from "./store/CartProvider";
+import './App.css';
+import Header from './components/Layout/Header';
+import React, { useState } from 'react';
+import Meals from './components/Meals/Meals';
+import Cart from './components/Cart/Cart';
+import CardProvider from './store/CartProvider';
 function App() {
+  // TODO := Add - Login page
   const [cartIsShown, setCartIsShown] = useState(false);
   const showAndHideCartHandler = (props) => {
     setCartIsShown(props);
