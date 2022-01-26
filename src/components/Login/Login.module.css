@@ -1,0 +1,31 @@
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  background-color: white;
+}
+.form-box {
+  width: 50%;
+  background-color: aqua;
+  text-align: justify;
+  border: 3px solid black;
+  border-radius: 5px;
+  margin: 10rem 2rem 2rem 10rem;
+  padding: 100px;
+  justify-content: space-between;
+}
+.input-box input {
+  margin: 5px 5px 5px 5px;
+  padding: 2px;
+}
+.input-box-invalid input {
+  border: 2px solid red;
+  margin: 5px 5px 5px 5px;
+  padding: 2px;
+}
+
+.input-invalid p {
+  color: red;
+  font-style: normal;
+}
