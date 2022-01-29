@@ -47,7 +47,9 @@ const Login = (props) => {
     ? 'input-box-invalid'
     : 'input-box';
   const numInputClass = phoneHasError ? 'input-box-invalid' : 'input-box';
-
+  const skipHandler = () => {
+    props.skipLoginHandler(true);
+  };
   const submitHandler = (event) => {
     event.preventDefault();
     resetName();
@@ -100,6 +102,11 @@ const Login = (props) => {
           {passwordHasError && <p>Password is Invalid!!</p>}
         </div>
         <button disabled={!formIsValid}>Submit</button>
+        <div>
+          <button type='button' onClick={skipHandler}>
+            Skip for Now {`->`}
+          </button>
+        </div>
       </div>
     </form>
   );
