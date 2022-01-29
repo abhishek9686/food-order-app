@@ -40,6 +40,9 @@ function App() {
   // const hideCartHandler = () => {
   //   setCartIsShown(false);
   // };
+  const cartLoginHandler = () => {
+    setSkippedLogin(false);
+  };
   console.log('Skipped: ', isLoginSkipped);
   console.log('isLogin: ', isLogin);
   return (
@@ -59,7 +62,13 @@ function App() {
       )}
       {(isLogin || isLoginSkipped) && (
         <div>
-          {cartIsShown && <Cart cartHandler={showAndHideCartHandler} />}
+          {cartIsShown && (
+            <Cart
+              login={isLogin}
+              loginHandler={cartLoginHandler}
+              cartHandler={showAndHideCartHandler}
+            />
+          )}
 
           <main>
             <Meals />

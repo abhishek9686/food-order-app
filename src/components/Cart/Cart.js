@@ -1,8 +1,8 @@
-import classes from "./Cart.module.css";
-import { useContext } from "react";
-import CartCtx from "../../store/cart-context";
-import Modal from "../UI/Modal";
-import CardItem from "./CartItem/CartItem";
+import classes from './Cart.module.css';
+import { useContext } from 'react';
+import CartCtx from '../../store/cart-context';
+import Modal from '../UI/Modal';
+import CardItem from './CartItem/CartItem';
 const Cart = (props) => {
   const cartCtx = useContext(CartCtx);
   const totalAmt = `$${cartCtx.totalAmount.toFixed(2)}`;
@@ -19,7 +19,7 @@ const Cart = (props) => {
     });
   };
   const cartItems = (
-    <ul className={classes["cart-items"]}>
+    <ul className={classes['cart-items']}>
       {cartCtx.items.map((item) => (
         <CardItem
           key={item.id}
@@ -35,6 +35,13 @@ const Cart = (props) => {
   const CartVisiblityHandler = () => {
     props.cartHandler(false);
   };
+  let buttonMsg = 'Order';
+  if (!props.login) {
+    buttonMsg = 'Login in to order';
+  }
+  const checkOutHandler = () => {
+    props.loginHandler();
+  };
   return (
     <Modal cartHandler={props.cartHandler}>
       {cartItems}
@@ -45,11 +52,15 @@ const Cart = (props) => {
       <div className={classes.actions}>
         <button
           onClick={CartVisiblityHandler}
-          className={classes["button--alt"]}
+          className={classes['button--alt']}
         >
           Close
         </button>
-        {hasItems && <button className={classes.button}>Order</button>}
+        {hasItems && (
+          <button onClick={checkOutHandler} className={classes.button}>
+            {buttonMsg}
+          </button>
+        )}
       </div>
     </Modal>
   );
