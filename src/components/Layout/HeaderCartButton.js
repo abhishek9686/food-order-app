@@ -4,6 +4,7 @@ import classes from './HeaderCartButton.module.css';
 import { useSelector } from 'react-redux';
 const HeaderCartButton = (props) => {
   const cartItems = useSelector((state) => state.cart.items);
+  const cartAmt = useSelector((state) => state.cart.totalAmount);
   const [btnIsFocused, setBtntoFocus] = useState(false);
 
   const items = Object.values(cartItems);
@@ -21,7 +22,7 @@ const HeaderCartButton = (props) => {
     return () => {
       clearTimeout(timer);
     };
-  }, [items]);
+  }, [cartAmt]);
   const cartClickHandler = () => {
     props.cartHandler(true);
   };
