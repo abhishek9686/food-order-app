@@ -3,7 +3,6 @@ import Header from './components/Layout/Header';
 import React, { useEffect, useState } from 'react';
 import Meals from './components/Meals/Meals';
 import Cart from './components/Cart/Cart';
-import CardProvider from './store/CartProvider';
 import Login from './components/Login/Login';
 function App() {
   // TODO := Add - Login page
@@ -46,7 +45,7 @@ function App() {
   console.log('Skipped: ', isLoginSkipped);
   console.log('isLogin: ', isLogin);
   return (
-    <CardProvider>
+    <div>
       <Header
         logInHandler={logInHandler}
         login={isLogin}
@@ -75,7 +74,7 @@ function App() {
           </main>
         </div>
       )}
-    </CardProvider>
+    </div>
   );
 }
 

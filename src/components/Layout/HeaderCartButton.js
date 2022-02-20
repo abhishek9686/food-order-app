@@ -1,15 +1,15 @@
-import React, { useContext, useEffect, useState } from "react";
-import CartIcon from "../Cart/CartIcon";
-import classes from "./HeaderCartButton.module.css";
-import CardContext from "../../store/cart-context";
+import React, { useContext, useEffect, useState } from 'react';
+import CartIcon from '../Cart/CartIcon';
+import classes from './HeaderCartButton.module.css';
+import { useSelector } from 'react-redux';
 const HeaderCartButton = (props) => {
+  const cartItems = useSelector((state) => state.cart.items);
+  const cartAmt = useSelector((state) => state.cart.totalAmount);
   const [btnIsFocused, setBtntoFocus] = useState(false);
-  const cartCtx = useContext(CardContext);
-  const { items } = cartCtx;
-  const noOfCartItems = items.reduce((curNumber, item) => {
-    return curNumber + item.amount;
-  }, 0);
-  const btnClasses = `${classes.button} ${btnIsFocused ? classes.bump : ""}`;
+
+  const items = Object.values(cartItems);
+  const noOfCartItems = Object.keys(cartItems).length;
+  const btnClasses = `${classes.button} ${btnIsFocused ? classes.bump : ''}`;
 
   useEffect(() => {
     if (items.length === 0) {
@@ -22,7 +22,7 @@ const HeaderCartButton = (props) => {
     return () => {
       clearTimeout(timer);
     };
-  }, [items]);
+  }, [cartAmt]);
   const cartClickHandler = () => {
     props.cartHandler(true);
   };
