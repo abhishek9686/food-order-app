@@ -29,11 +29,12 @@ const DUMMY_MEALS = [
   },
 ];
 const AvailableMeals = () => {
+  console.log("ENV: ",process.env)
   const [mealsData, setMeals] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
     const fetchMeals = async () => {
-      const response = await fetch('http://localhost:8008/api/meals', {
+      const response = await fetch('http://process.env.FOOD_ORDER_BD_SERVER/api/meals', {
         mode: 'cors',
         headers: {
           'Content-Type': 'application/json',
