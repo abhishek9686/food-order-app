@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import classes from './AvailableMeals.module.css';
 import Card from '../UI/Card';
 import MealItem from './MealItem/MealItem';
+const MealsApi = "/api/meals"
 const DUMMY_MEALS = [
   {
     id: 'm1',
@@ -29,12 +30,12 @@ const DUMMY_MEALS = [
   },
 ];
 const AvailableMeals = () => {
-  console.log("ENV: ",process.env)
+  let url= process.env.REACT_APP_API_URL+MealsApi
   const [mealsData, setMeals] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   useEffect(() => {
     const fetchMeals = async () => {
-      const response = await fetch('http://process.env.FOOD_ORDER_BD_SERVER/api/meals', {
+      const response = await fetch(url, {
         mode: 'cors',
         headers: {
           'Content-Type': 'application/json',
