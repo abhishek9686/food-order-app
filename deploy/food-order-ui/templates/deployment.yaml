@@ -39,9 +39,9 @@ spec:
               protocol: TCP
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
-          env:
-          - name: FOOD_ORDER_BD_SERVER
-            value: "food-order-bd.food-order.svc.cluster.local"
+          # env:
+          # - name: FOOD_ORDER_BD_SERVER
+          #   value: "food-order-bd.food-order.svc.cluster.local"
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}
